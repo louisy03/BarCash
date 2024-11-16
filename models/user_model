@@ -1,0 +1,13 @@
+import sqlite3
+
+class UserModel:
+    @staticmethod
+    def verificar_credenciales(usuario, contrasena):
+        conn = sqlite3.connect("app.db")
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM usuarios WHERE nombre_usuario = ? AND contrasena = ?", (usuario, contrasena))
+        usuario_db = cursor.fetchone()
+        conn.close()
+
+        return usuario_db is not None
