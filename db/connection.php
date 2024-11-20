@@ -1,4 +1,3 @@
-<!-- File: db/connection.php -->
 <?php
 $conection = new mysqli("localhost", "root", "", "barcashdb");
 

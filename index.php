@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre'];
     $contrasena = $_POST['contrasena'];
 
-    // Query database for user
+    // Query to fetch the user's hashed password
     $stmt = $conection->prepare("SELECT ID_Administrador, Contrasena FROM administrador WHERE Nombre = ?");
     $stmt->bind_param("s", $nombre);
     $stmt->execute();
@@ -16,16 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_result($id_administrador, $db_password);
         $stmt->fetch();
 
-        // Verify password
-        if ($contrasena === $db_password) { // Replace with password_verify() if hashing is implemented
+        // Verify the hashed password
+        if (password_verify($contrasena, $db_password)) {
             $_SESSION['id_administrador'] = $id_administrador;
             header("Location: dashboard.php");
             exit;
         } else {
-            $error = "Invalid username or password.";
+            $error = "Contraseña incorrecta.";
         }
     } else {
-        $error = "Invalid username or password.";
+        $error = "Usuario no encontrado.";
     }
     $stmt->close();
 }
