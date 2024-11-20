@@ -1,6 +1,0 @@
-from models.user_model import UserModel
-
-class LoginController:
-    @staticmethod
-    def validar_usuario(usuario, contrasena):
-        return UserModel.verificar_credenciales(usuario, contrasena)
