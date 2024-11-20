@@ -2,8 +2,8 @@
 include 'db/connection.php';
 
 // Datos del usuario
-$nombre = "Juan";
-$password = "123";
+$nombre = "Pedro";
+$password = "1234";
 
 // Hashear la contraseña
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
