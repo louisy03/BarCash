@@ -17,7 +17,7 @@ if (!isset($_SESSION['id_administrador'])) {
     <style>
         /* Fullscreen background */
         body {
-            background-color: rgba(77, 76, 72, 255); /* Night mode color */
+            background-color: rgba(77, 76, 72, 255);
             height: 100vh;
             margin: 0;
             display: flex;
@@ -29,25 +29,25 @@ if (!isset($_SESSION['id_administrador'])) {
 
         /* Logo styling */
         .logo {
-            width: 1000px; /* 5x larger */
+            width: 1000px;
             height: auto;
             position: absolute;
             left: 50%;
-            transform: translateX(-50%); /* Center horizontally */
-            bottom: 10%; /* Much lower position */
-            opacity: 0.7; /* 30% transparency */
-            z-index: 1; /* Move logo to back */
+            transform: translateX(-50%);
+            bottom: 10%;
+            opacity: 0.4;
+            z-index: 1;
         }
 
         /* Buttons box styling */
         .buttons-box {
-            background-color: rgba(58, 59, 58, 1); /* Box color */
-            color: white; /* White text */
+            background-color: rgba(58, 59, 58, 1);
+            color: white;
             padding: 1rem 2rem;
             border-radius: 10px;
             text-align: center;
-            margin-top: calc(30% + 50px); /* Adjust margin to ensure buttons box is below the logo */
-            z-index: 2; /* Ensure buttons are in front */
+            margin-top: calc(30% + 50px);
+            z-index: 2;
         }
 
         /* Buttons styling */
@@ -65,12 +65,12 @@ if (!isset($_SESSION['id_administrador'])) {
         .buttons-box a:not(:last-child)::after {
             content: "|";
             margin-left: 1rem;
-            color: white; /* Separator color */
+            color: white;
         }
 
         /* Hover effect */
         .buttons-box a:hover {
-            color: rgba(200, 200, 200, 1); /* Slightly lighter text on hover */
+            color: rgba(200, 200, 200, 1);
         }
     </style>
 </head>
