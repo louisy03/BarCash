@@ -1,4 +1,3 @@
-<!-- File: index.php -->
 <?php
 session_start();
 include 'db/connection.php';
@@ -55,50 +54,82 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         /* Card styling */
         .login-card {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(0, 0, 0, 0.85);
             border-radius: 15px;
             padding: 2rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
             width: 100%;
-            max-width: 400px;
+            max-width: 600px; 
         }
 
-        /* Logo styling */
         .logo {
-            width: 100px;
+            width: 200px;
             height: auto;
-            margin-bottom: 1rem;
+            margin: 0 auto;
+        }
+
+        .login-card h3,
+        .login-card .form-label {
+            color: white;
+        }
+
+        .login-card input[type="text"],
+        .login-card input[type="password"] {
+            background-color: rgba(132, 133, 132, 255);
+            border-color: rgba(132, 133, 132, 255);
+            color: white;
+        }
+
+        .login-card button[type="submit"] {
+            background-color: white;
+            color: black;
+            border-color: white;
+        }
+
+        .login-form {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .login-fields {
+            flex: 1;
+            margin-right: 20px; 
         }
     </style>
 </head>
 <body>
     <div class="login-card">
-        <!-- Logo -->
-        <img src="assets/images/logo.png" alt="Logo" class="logo">
-        <h3 class="mb-4">Inicio de sesión</h3>
+        <div class="login-form">
+            <div class="login-fields">
+                <h3 class="mb-4">Inicio de sesión</h3>
 
-        <!-- Login Form -->
-        <form method="POST" action="">
-            <?php if (isset($error)): ?>
-                <div class="alert alert-danger text-center"><?php echo $error; ?></div>
-            <?php endif; ?>
+                <!-- Login Form -->
+                <form method="POST" action="">
+                    <?php if (isset($error)): ?>
+                        <div class="alert alert-danger text-center"><?php echo $error; ?></div>
+                    <?php endif; ?>
 
-            <!-- Username -->
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-4">
+                        <label for="contrasena" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                </form>
             </div>
-
-            <!-- Password -->
-            <div class="mb-4">
-                <label for="contrasena" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="contrasena" name="contrasena" required>
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
-        </form>
+            <!-- Logo -->
+            <img src="assets/images/logo.png" alt="Logo" class="logo">
+        </div>
     </div>
 
     <!-- Bootstrap JS -->
