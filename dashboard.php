@@ -83,7 +83,7 @@ if (!isset($_SESSION['id_administrador'])) {
         <a href="inventory.php">Gestión de Inventario</a>
         <a href="orders.php">Registrar Pedidos</a>
         <a href="records.php">Registro de Ventas</a>
-        <a href="index.php">Cerrar Sesión</a>
+        <a href="logout.php">Cerrar Sesión</a>
     </div>
 
     <!-- Bootstrap JS -->
