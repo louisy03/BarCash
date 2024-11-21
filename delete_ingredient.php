@@ -51,7 +51,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             padding: 2rem;
             border-radius: 10px;
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
+        }
+        .form-box button {
+            background-color: black;
+            color: white;
+            border: 2px solid white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .form-box button:hover {
+            background-color: white;
+            color: black;
         }
     </style>
 </head>

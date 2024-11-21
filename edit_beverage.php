@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Bebida</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -96,7 +96,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             padding: 2rem;
             border-radius: 10px;
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
+        }
+        .form-box button {
+            background-color: black;
+            color: white;
+            border: 2px solid white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .form-box button:hover {
+            background-color: white;
+            color: black;
         }
     </style>
     <script>
