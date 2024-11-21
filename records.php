@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db/connection.php'; 
+include 'db/connection.php';
 
 // Consulta para obtener los datos de la tabla "pedido"
 $query = "
@@ -15,7 +15,6 @@ $query = "
     ORDER BY Fecha DESC
 ";
 $result = $conection->query($query);
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,7 +36,7 @@ $result = $conection->query($query);
 
         h1 {
             text-align: center;
-            color: black;
+            color: white;
             margin: 20px 0;
         }
 
@@ -95,37 +94,36 @@ $result = $conection->query($query);
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <!-- "BarCash" a la izquierda -->
-        <a class="navbar-brand" href="#">BarCash</a>
-        
-        <!-- Botón colapsable para dispositivos pequeños -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Texto centrado: "HISTORIAL" -->
-            <div class="mx-auto text-center">
-                <span class="navbar-text text-white fw-bold fs-4">Historial de Ventas</span>
-            </div>
+        <div class="container-fluid">
+            <!-- "BarCash" a la izquierda -->
+            <a class="navbar-brand" href="#">BarCash</a>
             
-            <!-- Elementos alineados a la derecha -->
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="inventory.php">Inventario  |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="orders.php">Ordenes  |</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="records.php">Historial</a>
-                </li>
-            </ul>
+            <!-- Botón colapsable para dispositivos pequeños -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Texto centrado: "HISTORIAL" -->
+                <div class="mx-auto text-center">
+                    <span class="navbar-text text-white fw-bold fs-4">Historial de Ventas</span>
+                </div>
+                
+                <!-- Elementos alineados a la derecha -->
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="inventory.php">Inventario |</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.php">Órdenes |</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="records.php">Historial</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-
+    </nav>
 
     <div class="container">
 
@@ -137,7 +135,7 @@ $result = $conection->query($query);
                     <th>Fecha</th>
                     <th>Método de Pago</th>
                     <th>Total</th>
-                    <th>Recibido</th>
+                    <th>Monto Recibido</th>
                     <th>Cambio</th>
                 </tr>
             </thead>
@@ -145,16 +143,14 @@ $result = $conection->query($query);
                 <?php
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "
-                            <tr>
-                                <td>{$row['ID_Pedido']}</td>
-                                <td>{$row['Fecha']}</td>
-                                <td>{$row['Metodo_Pago']}</td>
+                        echo "<tr>
+                                <td>" . htmlspecialchars($row['ID_Pedido']) . "</td>
+                                <td>" . htmlspecialchars($row['Fecha']) . "</td>
+                                <td>" . htmlspecialchars($row['Metodo_Pago']) . "</td>
                                 <td>$" . number_format($row['Total'], 2) . "</td>
                                 <td>$" . number_format($row['Recibido'], 2) . "</td>
                                 <td>$" . number_format($row['Cambio'], 2) . "</td>
-                            </tr>
-                        ";
+                              </tr>";
                     }
                 } else {
                     echo "<tr><td colspan='6'>No hay registros de ventas.</td></tr>";
