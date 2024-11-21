@@ -1,4 +1,3 @@
-<!-- File: beverages.php -->
 <?php
 session_start();
 include 'db/connection.php';
@@ -9,8 +8,19 @@ if (!isset($_SESSION['id_administrador'])) {
     exit;
 }
 
-// Fetch beverages from the database
-$beverages = $conection->query("SELECT Nombre, Descripcion, Precio FROM Producto ORDER BY ID_Producto DESC");
+// Fetch beverages with their ingredients and quantities
+$beverages = $conection->query("
+    SELECT 
+        p.Nombre AS Bebida, 
+        p.Descripcion, 
+        p.Precio, 
+        GROUP_CONCAT(CONCAT(i.Nombre, ' (', pi.Cantidad, ')') SEPARATOR '<br>') AS Ingredientes
+    FROM Producto p
+    LEFT JOIN PRODUCTO_INGREDIENTE pi ON p.ID_Producto = pi.ID_Producto
+    LEFT JOIN Ingrediente i ON pi.ID_Ingrediente = i.ID_Ingrediente
+    GROUP BY p.ID_Producto
+    ORDER BY p.ID_Producto DESC
+");
 ?>
 
 <!DOCTYPE html>
@@ -166,14 +176,16 @@ $beverages = $conection->query("SELECT Nombre, Descripcion, Precio FROM Producto
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Precio</th>
+                        <th>Ingredientes</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($row = $beverages->fetch_assoc()): ?>
                         <tr>
-                            <td><?php echo $row['Nombre']; ?></td>
+                            <td><?php echo $row['Bebida']; ?></td>
                             <td><?php echo $row['Descripcion']; ?></td>
                             <td><?php echo $row['Precio']; ?></td>
+                            <td><?php echo $row['Ingredientes'] ?: 'N/A'; ?></td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>

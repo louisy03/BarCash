@@ -1,4 +1,3 @@
-<!-- File: ingredients.php -->
 <?php
 session_start();
 include 'db/connection.php';
