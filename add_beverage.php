@@ -1,4 +1,3 @@
-<!-- File: add_beverage.php -->
 <?php
 session_start();
 include 'db/connection.php';
