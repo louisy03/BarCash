@@ -22,11 +22,36 @@ $result = $conection->query($query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BarCash - Historial de Ventas</title>
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
+        /* Top Bar Styling */
+        .top-bar {
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+        }
+
+        .top-bar .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .top-bar .nav-buttons a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .top-bar .nav-buttons a:hover {
+            text-decoration: underline;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             background-color: rgba(77, 76, 72, 255);
@@ -52,83 +77,47 @@ $result = $conection->query($query);
 
         table {
             width: 100%;
-            border-collapse: collapse;
             margin-top: 20px;
-            color: black;
+            border-collapse: collapse;
+            background-color: rgba(58, 59, 58, 1); /* Dark background */
+            color: white; /* White text */
         }
 
         th, td {
-            border: 1px solid #ddd;
             padding: 12px;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white borders */
         }
 
         th {
-            background-color: #3498db;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark header */
             color: white;
         }
 
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: rgba(77, 76, 72, 0.5); /* Slightly lighter for even rows */
         }
 
-        .navbar {
-            margin-bottom: 20px;
-        }
-
-        .navbar {
-            background-color: black !important;
-        }
-
-        .navbar .navbar-brand,
-        .navbar .nav-link {
-            color: white !important;
-        }
-
-        .navbar .nav-link.active {
-            font-weight: bold;
-            text-decoration: underline;
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <!-- "BarCash" a la izquierda -->
-            <a class="navbar-brand" href="#">BarCash</a>
-            
-            <!-- Botón colapsable para dispositivos pequeños -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <!-- Texto centrado: "HISTORIAL" -->
-                <div class="mx-auto text-center">
-                    <span class="navbar-text text-white fw-bold fs-4">Historial de Ventas</span>
-                </div>
-                
-                <!-- Elementos alineados a la derecha -->
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="inventory.php">Inventario |</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="orders.php">Órdenes |</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="records.php">Historial</a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">BarCash</div>
+        <div class="nav-buttons">
+            <a href="dashboard.php">Inicio</a>
+            <a href="logout.php">Cerrar Sesión</a>
         </div>
-    </nav>
+    </div>
 
     <div class="container">
+        <h1>Historial de Ventas</h1>
 
         <!-- Tabla de Historial -->
-        <table class="table table-bordered">
+        <table class="table table-dark table-striped">
             <thead>
                 <tr>
                     <th>ID Pedido</th>
